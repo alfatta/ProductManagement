@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
-import { Card, CardSection, Button } from './common';
+import { Card, CardSection, Button, Header } from './common';
 
 import ProductForm from './ProductForm';
+import { View } from 'react-native';
 
 class ProductEdit extends Component {
   onButtonPress() {
@@ -29,19 +30,22 @@ class ProductEdit extends Component {
   }
   render() { 
     return (
-      <Card>
-        <ProductForm />
-        <CardSection>
-          <Button onPress={ () => this.onButtonPress() }>
-            Edit
-          </Button>
-        </CardSection>
-        <CardSection>
-          <Button onPress={ () => this.onButtonDeletePress() }>
-            Delete
-          </Button>
-        </CardSection>
-      </Card>
+      <View>
+        <Header title="Edit Product" />
+        <Card>
+          <ProductForm />
+          <CardSection>
+            <Button onPress={ () => this.onButtonPress() }>
+              Edit
+            </Button>
+          </CardSection>
+          <CardSection>
+            <Button onPress={ () => this.onButtonDeletePress() }>
+              Delete
+            </Button>
+          </CardSection>
+        </Card>
+      </View>
     );
   }
 }

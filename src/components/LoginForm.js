@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { Card, CardSection, Button, Spinner, Input } from './common';
+import { Card, CardSection, Button, Spinner, Input, Header } from './common';
 
 class LoginForm extends Component {
   state = {
@@ -45,31 +45,34 @@ class LoginForm extends Component {
   }
   render() { 
     return (
-      <Card>
-        <CardSection>
-          <Input
-            value={ this.state.email }
-            onChangeText={ (email) => this.setState({ email }) }
-            label="Email"
-            placeholder="user@gmail.com" />
-        </CardSection>
-        <CardSection>
-          <Input
-            value={ this.state.password }
-            onChangeText={ (password) => this.setState({ password }) }
-            label="Password"
-            placeholder="password"
-            secureTextEntry />
-        </CardSection>
+      <View>
+        <Header title="Login" />
+        <Card>
+          <CardSection>
+            <Input
+              value={ this.state.email }
+              onChangeText={ (email) => this.setState({ email }) }
+              label="Email"
+              placeholder="user@gmail.com" />
+          </CardSection>
+          <CardSection>
+            <Input
+              value={ this.state.password }
+              onChangeText={ (password) => this.setState({ password }) }
+              label="Password"
+              placeholder="password"
+              secureTextEntry />
+          </CardSection>
 
-        <Text style={{ fontSize: 18, color: 'red', alignSelf: 'center' }}>
-          { this.state.error }
-        </Text>
+          <Text style={{ fontSize: 18, color: 'red', alignSelf: 'center' }}>
+            { this.state.error }
+          </Text>
 
-        <CardSection>
-          { this.renderButton() }
-        </CardSection>
-      </Card>
+          <CardSection>
+            { this.renderButton() }
+          </CardSection>
+        </Card>
+      </View>
     );
   }
 }

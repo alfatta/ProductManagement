@@ -38,7 +38,6 @@ class App extends Component {
     return (
       <Provider store={ store }>
         <NavigationContainer>
-          <Header title="Product Management" />
           <Drawer.Navigator>
             { this.state.loggedIn ? 
               <>

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Card, CardSection, Button } from './common';
 
 import ProductForm from './ProductForm';
+import { View } from 'react-native';
+import { Header } from './common';
 
 class ProductCreate extends Component {
   onButtonPress() {
@@ -19,14 +21,17 @@ class ProductCreate extends Component {
   }
   render() { 
     return (
-      <Card>
-        <ProductForm />
-        <CardSection>
-          <Button onPress={ () => this.onButtonPress() }>
-            Save
-          </Button>
-        </CardSection>
-      </Card>
+      <View>
+        <Header title="Add New Product" />
+        <Card>
+          <ProductForm />
+          <CardSection>
+            <Button onPress={ () => this.onButtonPress() }>
+              Save
+            </Button>
+          </CardSection>
+        </Card>
+      </View>
     );
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import axios from 'axios';
 
+import { Header } from './common'
 import ProductItem from './ProductItem'
 
 class ProductList extends Component {
@@ -42,9 +43,12 @@ class ProductList extends Component {
 
   render() { 
     return (
-      <ScrollView>
-        { this.renderProducts() }
-      </ScrollView>
+      <View>
+        <Header title="Product List" />
+        <ScrollView>
+          { this.renderProducts() }
+        </ScrollView>
+      </View>
     );
   }
 }

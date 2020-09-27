@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { View, Text, Image, StyleSheet, Linking } from 'react-native';
+import { connect } from 'react-redux';
 
 import { Card, CardSection, Button } from './common'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const style = StyleSheet.create({
   image: {
@@ -40,11 +42,22 @@ class ProductItem extends Component {
     }
   }
 
+  onEditPress() {
+    console.log('Edit product');
+    this.props.dispatch({ type: 'SET_PRODUCT', payload: this.props.product })
+    this.props.navigation.navigate('Edit Product')
+  }
+
   render() { 
     const { name, price, image, actionLink } = this.props.product
 
     return (
       <Card>
+        <CardSection>
+          <TouchableWithoutFeedback onPress={ () => this.onEditPress() }>
+            <Text>Edit</Text>
+          </TouchableWithoutFeedback>
+        </CardSection>
         <CardSection>
           <Image style={ style.image } source={ {uri: image} } />
         </CardSection>
@@ -66,4 +79,4 @@ class ProductItem extends Component {
   }
 }
  
-export default ProductItem;
+export default connect()(ProductItem);

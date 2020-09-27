@@ -15,6 +15,7 @@ import ProductCreate from './src/components/ProductCreate';
 import config from './src/config';
 
 import reducers from './src/reducers';
+import ProductEdit from './src/components/ProductEdit';
 
 const Drawer = createDrawerNavigator()
 
@@ -44,6 +45,14 @@ class App extends Component {
                 <Drawer.Screen name="Product List" component={ ProductList } />
                 <Drawer.Screen name="Add New Product" component={ ProductCreate } />
                 <Drawer.Screen name="Logout" component={ Logout } />
+                <Drawer.Screen
+                  name="Edit Product"
+                  component={ ProductEdit }
+                  options={{
+                    drawerLabel: () => null,
+                    title: null,
+                    drawerIcon: () => null
+                  }} />
               </>
             :
               <>

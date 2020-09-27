@@ -36,7 +36,7 @@ class ProductList extends Component {
 
   renderProducts() {
     return this.state.products.map(product => 
-      <ProductItem product={ product } key={ product.id } />
+      <ProductItem product={ product } key={ product.id } navigation={ this.props.navigation } />
     )
   }
 

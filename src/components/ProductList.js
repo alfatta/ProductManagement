@@ -10,6 +10,16 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
+    this._unsubscribe = this.props.navigation.addListener('focus', () => this.loadProduct())
+    this.loadProduct()
+  }
+
+  componentWillUnmount() {
+    this._unsubscribe()
+  }
+
+  loadProduct() {
+    this.setState({ products: [] })
     const url = 'https://simple-ecommerce-9999.herokuapp.com/api/v1/product'
 
     console.log('Request to', url);

@@ -17,6 +17,16 @@ class ProductEdit extends Component {
         this.props.navigation.navigate('Product List')
       })
   }
+  onButtonDeletePress() {
+    const data = this.props.form
+    const url = 'https://simple-ecommerce-9999.herokuapp.com/api/v1/product/' + data.id
+
+    axios.delete(url)
+      .then(() => {
+        this.props.dispatch({ type: 'RESET_PRODUCT' })
+        this.props.navigation.navigate('Product List')
+      })
+  }
   render() { 
     return (
       <Card>
@@ -24,6 +34,11 @@ class ProductEdit extends Component {
         <CardSection>
           <Button onPress={ () => this.onButtonPress() }>
             Edit
+          </Button>
+        </CardSection>
+        <CardSection>
+          <Button onPress={ () => this.onButtonDeletePress() }>
+            Delete
           </Button>
         </CardSection>
       </Card>
